@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>enviar</button>
+</body>
+<script>
+    document.querySelector("button").addEventListener("click", async () => {
+        let wait = document.createElement("p");
+        wait.innerHTML = "Executando comando, espere... (adicionar spiner)";
+        document.body.append(wait)
+
+        let req = await fetch("/assistantCommand", {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                command: document.querySelector("textarea").value
+            }),
+        });
+
+        let text = await req.text();
+
+        console.log(text);
+
+        wait.remove()
+    })
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get code</title>
+    <style>
+        * {
+            background: black;
+            color: white;
+            font-family: sans-serif;
+        }
+        textarea {
+            user-select: all;
+            resize: none;
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+            padding: 30px;
+            font-size: 5vw;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your code:</h1>
+    <textarea name="" id="" cols="30" rows="10" onclick="this.focus();this.select()"  readonly="readonly">
+        loading...
+    </textarea>
+</body>
+
+<script>
+
+const url = new URL(window.location.href);
+
+document.querySelector("textarea").value = url.searchParams.get("code");
+
+</script>
+</html>
