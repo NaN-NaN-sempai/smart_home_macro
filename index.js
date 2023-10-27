@@ -1,3 +1,11 @@
+/* 
+	generate UDP WOL message:
+
+	mac_address = "PC_MAC_Address";
+	"0x" + "f".repeat(12) + mac_address.toLowerCase().replaceAll(":","").repeat(16);
+*/
+
+
 const express = require("express");
 const path = require("path");
 const app = express();
